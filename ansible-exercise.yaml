@@ -3,7 +3,7 @@
   tasks:
   - name: Install Nginx
     apt:
-      name: Nginx
+      name: nginx
       state: present
       update_cache: true
     register: nginxvar1
@@ -20,7 +20,7 @@
       var: var1
   - name: Remove Nginx
     apt:
-      name: Nginx
+      name: nginx
       pkg: nginx
       state: absent
       autoremove: yes
