@@ -1,0 +1,26 @@
+- hosts: 127.0.0.1
+  become: true
+  tasks:
+  - name: Install Nginx
+    apt:
+      name: Nginx
+      state: present
+      update_cache: true
+    register: nginxvar1
+  - name: Nginx Debug
+    debug:
+      var: nginxvar1
+  - name: Copy file
+    copy: 
+      dest: /etc/remove-file
+      src: myfile1
+    register: var1
+  - name: Show variable contents
+    debug:
+      var: var1
+  - name: Remove Nginx
+    apt:
+      name: Nginx
+      pkg: nginx
+      state: absent
+      autoremove: yes
