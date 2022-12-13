@@ -1,0 +1,11 @@
+---
+- hosts: all
+  vars:
+    git_repo: https://github.com/MaggieWalsh/chaperootodo_client-master.git
+  tasks:
+    - name: "Clone repo"
+      git:
+        repo: "{{ git_repo }}"
+        dest: "/repo/"
+        clone: yes
+        update: yes
