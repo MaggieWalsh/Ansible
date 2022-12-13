@@ -1,9 +1,9 @@
-all:
-  children:
-    test:
-      hosts:
-        ip-172-31-42-49.eu-west-2.compute.internal:
-        ip-172-31-33-67.eu-west-2.compute.internal:
-      vars:
-        ansible_user: ubuntu
-        ansible_ssh_private_key_file: '~/.ssh/id_rsa'
+- hosts: test
+  tasks:
+  - name: "Ping {{ inventory_hostname }}"
+    ping:
+    register: ping_info
+
+  - name: "Show ping_info in console"
+    debug:
+      msg: "{{ ping_info }}"
